@@ -12,6 +12,7 @@ body, html {
     width: 100vw;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: center;
 
    background-size: cover;
@@ -52,6 +53,7 @@ img {
    align-content: center;
    width: 100%;
    position: relative;
+   z-index: 1;
 }
 .switch-button {
     width: 64px;
@@ -107,7 +109,6 @@ span {
     height: 20%;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
     position: relative;
 
 }
@@ -120,8 +121,8 @@ ul {
     top: 10px;
 }
 li img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 @media (max-width: 768px) {
     .section-links {
@@ -132,6 +133,9 @@ li img {
         text-align: center;
         display: flex;
         justify-content: center;
+    }
+    li img{
+        z-index: 1;
     }
     
   }

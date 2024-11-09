@@ -1,0 +1,226 @@
+.container-mensagems {
+    width: 30%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    gap: 20px;
+    position: absolute;
+
+}
+.section-mensagens {
+    height: 50%;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    background-color: #F8F8FF;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.input-mensagem{
+    position: absolute;
+    width: 90%;
+    height: 20%;
+    border: 1px solid black;
+    bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    
+}
+input {
+    border: none;
+    background-color: transparent;
+    animation: typing 4s steps(40) 1s 1 normal both, blink 0.75s step-end infinite; /* A animação de digitação */
+}
+input::placeholder {
+    font-weight: bold;
+}
+.actions {
+    display: flex;
+    right: 20px; 
+    gap: 10px;
+    position: absolute;
+}
+.actions img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+  width: 30px;
+}
+.actions img:hover {
+    transform: scale(1.1)
+}
+.actions img:first-child{
+    width:  20px;
+}
+input:focus {
+    outline: none;
+}
+.show-mensagem {
+    width: 100%;
+    display: flex;
+    height: 75%;
+}
+.showMes{
+  flex: 1;
+  display: flex;
+  flex-direction: column    ;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.mensagemUser1 {
+    display: flex;
+    gap: 10px;
+}
+.mensagemUser2{
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-items: flex-end;
+}
+.mensagem{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    position: relative;
+
+}
+.mensagem2{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    justify-content: end;
+    position: relative;
+
+}
+.mensagem img {
+    width: 32px;
+    height: auto;
+}.mensagem2 img {
+    width: 32px;
+    height: auto;
+}
+.horario{
+    border: none;
+    font-size: 14px;
+}
+
+p {
+    padding: 5px;
+    white-space: nowrap;
+    width: fit-content;
+    border-radius: 2px;
+    border: 1px solid black
+}
+@media (max-width: 768px) {
+     input::placeholder{
+      
+        opacity: 0;
+
+    }
+    .container-mensagems{
+        width: 100%;
+    }
+}
+
+
+/* Esconde o botão de exclusão inicialmente */
+.mensagem .deleteButton,
+.mensagem2 .deleteButton2 {
+    display: none;
+}
+
+/* Exibe o botão de exclusão apenas quando o mouse está sobre a mensagem */
+.mensagem:hover .deleteButton
+{
+    display: inline-block;
+}
+.mensagem2:hover .deleteButton2{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    }
+b{
+    position: absolute;
+}
+.disabled{
+    display: none;
+}
+.voltar{
+    position: absolute;
+    right: 10px;
+    width: 32px;
+    height: auto;
+    cursor: pointer;
+    z-index: 1;
+}
+
+@keyframes typing {
+    from {
+      width: 0; /* Começa com 0 de largura */
+    }
+    to {
+      width: 100%; /* Expande para o tamanho total do texto */
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent; /* Faz o cursor piscar */
+    }
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .dot-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    position: relative;
+    animation: moveUpDown 1s infinite;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: 0s; /* Sem atraso */
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s; /* Atraso de 0.2s */
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s; /* Atraso de 0.4s */
+  }
+  
+  @keyframes moveUpDown {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -20px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="containerMessenge.css">
 </head>
 <body>
  <div class="audios">
@@ -26,7 +27,7 @@
         </div>
         
         <div class="section-links">
-            <span>Increva-se no NLW</span>
+            <span data-section="chat">Chat</span>
             <span>Increva-se no NLW</span>
             <span>Increva-se no NLW</span>
             <span>Increva-se no NLW</span>
@@ -51,6 +52,48 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+     <div class="container-mensagems disabled" >
+        <div class="section-mensagens">
+            <img src="/src/assets/img/voltar.png" class="voltar" alt="">
+            <b></b>
+
+
+             <div class="show-mensagem">
+                <div class="mensagemUser1 showMes">
+                   
+                    <div class="mensagem">
+                     <div class="dot disabled"></div>
+                     <div class="dot disabled"></div>
+                     <div class="dot disabled"></div>
+
+                       
+
+
+                    </div>
+                </div>
+                <div class="mensagemUser2 showMes">
+                    <div class="mensagem2">
+                    </div>
+                </div>
+             </div>
+
+            <div class="input-mensagem">
+                <input type=" text" placeholder="Type a new Text" maxlength="10">
+
+                <div class="actions">
+                    <img src="/src/assets/svg/buttonAnexaImg.svg" alt="" class="anexaImage">
+                    <img src="/src/assets/svg/emoji.svg" alt="">
+                    <img class="sendButton" src="/src/assets/svg/send.svg" alt="">
+                    <input type="file" style="display: none;" accept="image/*" class="imageInput">
+                </div>
+            </div>
+
+        </div>
+     </div>
+
+     <script src="scriptMensagem.js"></script>
+     <script src="script.js"></script>
+
+  
 </body>
 </html>
