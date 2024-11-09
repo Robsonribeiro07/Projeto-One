@@ -1,71 +1,98 @@
-// Seleção dos elementos DOM
-const campeaos = document.querySelectorAll('.champions');
-const container = document.querySelector('.champs');
 
-// Array de campeões
-const Champions = [
-  { nome: "Darius", img: "/src/img/Darius.jpg" },
-  { nome: "Fiora", img: "/src/img/Fiora_0.jpg" },
-  { nome: "Fiora", img: "/src/img/Fiora_0.jpg" },
-  { nome: "Morgana", img: "/src/img/Fiora_0.jpg" },
-  { nome: "Morgana", img: "/src/img/Fiora_0.jpg" },
-  { nome: "Morgana", img: "/src/img/Fiora_0.jpg" }
-];
+const switchh = document.querySelector('.switch-button');
+const button = switchh.querySelector('img');  // Seleciona a imagem
+const body = document.querySelector('body');
+const Name = document.querySelector('.profile-name')
+const container = document.querySelector('.container')
 
-// Preencher o container com campeões
-Champions.forEach((champion, index) => {
-  // Primeiro, tentamos encontrar o elemento no DOM que corresponde ao campeão
-  let championsElement = campeaos[index]; // Procuramos pelo índice no array de campeões já presentes
+const audio = document.querySelector('.selected')
 
-  // Se o elemento não existir (não foi encontrado no DOM), criamos um novo
-  if (!championsElement) {
-    championsElement = document.createElement('div');
-    championsElement.classList.add('champions');
-    
-    // Criação da imagem e adição ao elemento
-    const img = document.createElement('img');
-    img.src = champion.img;
-    championsElement.appendChild(img);
+const listas = document.querySelectorAll('span')
+// Caminho correto para a imagem de fundo
+const imgWhite = "url('/src/assets/svg/backgroundLight.svg')";  // Caminho da imagem de fundo
+const imgBlack = "url('/src/assets/svg/Background.svg')";  // Caminho da imagem de fundo
 
-    // Adiciona o novo 'champions' ao container
-    container.appendChild(championsElement);
-  } else {
-    // Se o elemento já existe, apenas atualizamos a imagem do campeão
-    const img = championsElement.querySelector('img');
-    if (img) {
-      img.src = champion.img;
+// Variável 'start' movida para fora para manter seu estado
+let start = false;
+
+// Aplica o evento de clique apenas na imagem e impede a propagação imediata
+button.addEventListener('click', (e) => {
+    e.stopImmediatePropagation(); // Impede a propagação do evento para outros ouvintes
+
+    if (!start) {
+        button.style.transform = "translateX(40px)";  // Move a imagem para a direita
+        AlterarThemaWhite();  // Alterando o tema ao clicar
+    } else {
+        button.style.transform = "translateX(0)";  // Retorna a imagem à posição inicial
+        AlterarThemaBlack()
     }
-  }
 
-  // Atualiza o nome do campeão (se houver um elemento para o nome)
-  let nameElement = championsElement.querySelector('.nameChampion');
-  if (!nameElement) {
-    nameElement = document.createElement('div');
-    nameElement.classList.add('nameChampion');
-    championsElement.appendChild(nameElement);
-  }
-  nameElement.textContent = champion.nome; // Atualiza o nome do campeão
+    // Alterna o estado de 'start'
+    start = !start;
 });
 
-// Seleção da imagem e nome do campeão para exibição
-const championImage = document.querySelector('img'); // Imagem do campeão
-const championName = document.querySelector('.nameChampion'); // Nome do campeão
+console.log('ok');
 
-// Seleção do botão
-const button = document.querySelector('.button');
+// Função para alterar o tema de fundo
+function AlterarThemaWhite() {
+    setTimeout(() => {
+        body.style.backgroundImage = imgWhite;
+        Name.style.color = "black"
 
-// Função para exibir detalhes do campeão
-function displayChampions(nome) {
-  const campeao = Champions.find(champ => champ.nome === nome); // Corrige a busca pelo nome correto
-
-  if (campeao) {
-    championImage.src = campeao.img;
-    championName.textContent = campeao.nome; // Atualiza o nome do campeão
-  }
+    }, 100);  // Atraso de 100ms para garantir que a animação do botão ocorra primeiro
 }
 
-// Adiciona o listener ao botão
-button.addEventListener('click', () => {
-  const nome = button.getAttribute('data-nome'); // Pega o nome do campeão a partir do atributo 'data-nome'
-  displayChampions(nome); // Exibe os detalhes do campeão
+function AlterarThemaBlack() {
+    setTimeout(() => {
+        body.style.backgroundImage = imgBlack;
+        Name.style.color = "White"
+    }, 100);  // Atraso de 100ms para garantir que a animação do botão ocorra primeiro
+}
+
+let currentIndex = 0
+function selectItem(index) {
+    // Remover a classe de todos os itens
+    listas.forEach(item => item.classList.remove('selected'));
+    
+    // Adicionar a classe 'selected' ao item atual
+    if (listas[index]) {
+        listas[index].classList.add('selected');
+        // Reproduzir o áudio ao selecionar
+        audio.currentTime = 0;
+        audio.play();
+    }
+}
+listas.forEach((items, index) => {
+    items.addEventListener('mouseover', () => {
+        selectItem(index); // Seleciona o item quando o mouse passar sobre ele
+    });
+
+    items.addEventListener('mouseout', () => {
+        items.classList.remove('selected'); // Remove a classe ao sair do item
+    });
 });
+
+function movedown(){
+    if(currentIndex < listas.length - 1){
+        currentIndex++
+        selectItem(currentIndex)
+        console.log(currentIndex)
+
+    }
+}
+
+function moveUp(){
+    if(currentIndex > 0){
+        currentIndex--
+        selectItem(currentIndex)
+        console.log(currentIndex)
+    }
+}
+
+document.addEventListener('keydown', (e)=>{
+    if(e.key === "ArrowDown"){
+        movedown()
+    } else if(e.key ==="ArrowUp"){
+        moveUp()
+    }
+})
