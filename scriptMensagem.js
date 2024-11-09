@@ -20,6 +20,11 @@ let mensagemUser1 = false; // Alterna entre os usuários
 
 let imageMessage = ''
 
+const time = new Date()
+
+const horas = time.getHours().toString().padStart(2, '0')
+const minutos = time.getMinutes().toString().padStart(2, '0')
+
 
 SendButton.addEventListener('click', () => {
     if (inputText.value.trim() === '') return;
@@ -27,6 +32,7 @@ SendButton.addEventListener('click', () => {
     const textInput = inputText.value;
     const newMensagem = document.createElement('div');
     const img = document.createElement('img');
+    const horario = document.createElement('li')
     img.src = "/src/assets/svg/profile.svg";
     const newMensagems = document.createElement('p');
     newMensagems.innerHTML = textInput;
@@ -44,8 +50,15 @@ SendButton.addEventListener('click', () => {
         newMensagem.appendChild(img);
         newMensagem.appendChild(newMensagems);
         newMensagem.appendChild(deleteButton);
+        newMensagem.appendChild(horario)
         meensagemuser1.appendChild(newMensagem);
     deleteButton.classList.add('deleteButton');
+    horario.classList.add('horario')
+    horario.innerHTML = `${horas}:${minutos}`
+    
+     animationDigitaçao.forEach(anim =>{
+        anim.classList.add('activedot')
+     })
         
         // Adiciona a mensagem ao array de mensagens do usuário 1
         mensagensUser1.push({ id: Date.now(), texto: textInput });
@@ -54,8 +67,14 @@ SendButton.addEventListener('click', () => {
         newMensagem.appendChild(newMensagems);
         newMensagem.appendChild(img);
         newMensagem.appendChild(deleteButton);
+        newMensagem.appendChild(horario)
         meensagemuser2.appendChild(newMensagem);
-    deleteButton.classList.add('deleteButton2');
+        horario.classList.add('horario2')
+        horario.innerHTML = `${horas}:${minutos}`
+         deleteButton.classList.add('deleteButton2');
+        animationDigitaçao.forEach(anim =>{
+        anim.classList.remove('activedot')
+     })
         
         // Adiciona a mensagem ao array de mensagens do usuário 2
         mensagensUser2.push({ id: Date.now(), texto: textInput });
@@ -104,7 +123,7 @@ function EnvioAtualizaçao(){
 
      setTimeout(() => {
         mensagemInfo.innerText = ""
-     }, 400);
+     }, 600);
 }
 anexaImage.addEventListener('click', ()=>{
     imageInput.click()

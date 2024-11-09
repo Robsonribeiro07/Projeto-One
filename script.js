@@ -8,6 +8,9 @@ const as = document.querySelectorAll('li')
 const iconElements = document.querySelectorAll('.social-medias ul li img'); // Seleciona todos os ícones
 const buttonVoltar = document.querySelector('.voltar')
 
+const dots = document.querySelectorAll('dot')
+
+
 const switchhh = document.querySelector('.switch')
 const sectionLinks = document.querySelector('.section-links')
 

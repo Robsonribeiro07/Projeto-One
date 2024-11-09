@@ -19,6 +19,7 @@
     justify-content: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    overflow: hidden;
 }
 .input-mensagem{
     position: absolute;
@@ -97,6 +98,8 @@ input:focus {
     width: 100%;
     justify-content: end;
     position: relative;
+    margin-bottom: 10px;
+
 
 }
 .mensagem img {
@@ -107,8 +110,17 @@ input:focus {
     height: auto;
 }
 .horario{
+    list-style: none;
     border: none;
     font-size: 14px;
+}
+.horario2{
+    border: none;
+    position: absolute;
+    font-size: 14px;
+    left: 50px;
+    bottom: 5px;
+    list-style: none;
 }
 
 p {
@@ -189,6 +201,8 @@ b{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
+
   }
   
   .dot {
@@ -196,8 +210,10 @@ b{
     height: 20px;
     background-color: #000;
     border-radius: 50%;
+    
     position: relative;
     animation: moveUpDown 1s infinite;
+   
   }
   
   .dot:nth-child(1) {
@@ -223,4 +239,7 @@ b{
       top: 0;
     }
   }
-  
+.activedot {
+    right: -350px;
+
+}
