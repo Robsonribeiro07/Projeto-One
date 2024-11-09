@@ -49,3 +49,6 @@ ul {
     align-items: center;
     display: flex;
 }
+ul{
+    border: 0cap;
+}
