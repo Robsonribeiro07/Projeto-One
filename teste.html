@@ -110,24 +110,75 @@
 
         <script>
             const input = document.querySelector('input')
-
-            input.addEventListener('input', function () {
-                const query = this.value.toLowerCase()
-                const filmes = document.querySelectorAll('.movie-container')
+            const moiveContainer = document.querySelectorAll('.movie-container')
 
 
-                filmes.forEach(function (movie) {
-                    const movieTitle = movie.getAttribute('data-title').toLocaleLowerCase()
+            input.addEventListener('input', function() {
+                const query = this.value.toLocaleLowerCase()
+
+
+                moiveContainer.forEach(function(movie){
+
+                    const movieTitle = movie.getAttribute('data-title').toLowerCase()
+
                     if(movieTitle.includes(query)){
                         movie.style.display = ''
+                        if(query === movieTitle){
+                            window.alert('achou filme?')
+                        }
+
                     } else {
-                        movie.style.display = 'none'
-                        
+                        movie.style.display = "none"
                     }
 
                 })
-
             })
+            let initialX = null;
+let posiçoes = [];
+let concaternar = "Resultado da soma: ";  // Define a string para concatenar
+
+function atutalizarPosiçao(e) {
+    if (initialX !== null) {
+        let deltax = e.clientX - initialX;
+
+        posiçoes.push(deltax);
+
+        if (posiçoes.length > 2) {
+            posiçoes.shift();  // Remove o primeiro elemento se o array tiver mais de 2 elementos
+
+            // Mostra os valores que serão somados
+            console.log("Valores para somar: " + posiçoes.join(' + ')); 
+
+            let resultPlayer = window.prompt().toLocaleLowerCase()
+
+            if(resultPlayer == 'sim'){
+                setTimeout(() => {
+            const soma = posiçoes.reduce((valorAculador, atual) => valorAculador + atual, 0);
+            console.log(concaternar + soma);
+                
+            }, 500);
+
+            } else {
+                console.log('Nao sera mostrado')
+            }
+
+            // Calcula a soma dos valores
+            
+
+            // Exibe a soma concatenada com a string
+        }
+    }
+}
+
+// Exemplo de como capturar o evento de clique para chamar a função
+document.addEventListener('click', (e) => {
+    if (initialX === null) {
+        initialX = e.clientX;
+    } else {
+        atutalizarPosiçao(e);
+    }
+});
+
         </script>
     </div>
 </body>
