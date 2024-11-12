@@ -1,8 +1,12 @@
+
 const containerMensagems = document.querySelector(".show-mensagem");
 const SendButton = document.querySelector('.sendButton');
 const meensagemuser1 = document.querySelector('.mensagemUser1');
 const meensagemuser2 = document.querySelector('.mensagemUser2');
 const mensagemInfo = document.querySelector('b')
+
+const emojiInput = document.querySelector('.emojiInput')
+const emojiPicke = document.querySelector('#emojiPicker')
 
 const anexaImage = document.querySelector('.anexaImage')
 const imageInput = document.querySelector(".imageInput")
@@ -32,7 +36,7 @@ SendButton.addEventListener('click', () => {
     const textInput = inputText.value;
     const newMensagem = document.createElement('div');
     const img = document.createElement('img');
-    const horario = document.createElement('li')
+    const horario = document.createElement('span')
     img.src = "/src/assets/svg/profile.svg";
     const newMensagems = document.createElement('p');
     newMensagems.innerHTML = textInput;
@@ -53,21 +57,32 @@ SendButton.addEventListener('click', () => {
         newMensagem.appendChild(horario)
         meensagemuser1.appendChild(newMensagem);
     deleteButton.classList.add('deleteButton');
-    horario.classList.add('horario')
-    horario.innerHTML = `${horas}:${minutos}`
+        horario.classList.add('horario')
     
+
+        setTimeout(() => {
+            const pWidth = newMensagems.clientWidth; // Agora o pWidth estará correto
+            horario.style.position = "absolute";
+            horario.style.left = `${pWidth - 5}px`; // Ajuste do horário à direita da largura do <p>
+            horario.innerHTML = `${horas}:${minutos}`;
+        }, 100); // Atraso de 0ms garante que a renderização do DOM já tenha sido feita
      animationDigitaçao.forEach(anim =>{
         anim.classList.add('activedot')
+
+
+
      })
         
         // Adiciona a mensagem ao array de mensagens do usuário 1
         mensagensUser1.push({ id: Date.now(), texto: textInput });
     } else {
         newMensagem.classList.add("mensagem2");
+        newMensagem.appendChild(horario)
+
         newMensagem.appendChild(newMensagems);
+
         newMensagem.appendChild(img);
         newMensagem.appendChild(deleteButton);
-        newMensagem.appendChild(horario)
         meensagemuser2.appendChild(newMensagem);
         horario.classList.add('horario2')
         horario.innerHTML = `${horas}:${minutos}`
@@ -155,3 +170,13 @@ imageInput.addEventListener('change', () => {
 
 
 });
+
+emojiInput.addEventListener('click', ()=>{
+    emojiPicke.style.display = emojiPicke.style.display === "none" ? "block" : "none"
+})
+
+emojiPicke.addEventListener('emoji-click', (event)=>{
+    
+    inputText.value += event.detail.unicode
+    emojiPicke.style.display = "none"
+})

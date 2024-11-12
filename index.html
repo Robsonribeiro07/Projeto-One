@@ -6,34 +6,36 @@
     <title>Projeto</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="containerMessenge.css">
+
 </head>
 <body>
  <div class="audios">
     <audio class="selected" src="/src/assets/audio/digital-beeping-151921.mp3"></audio>
  </div>
     <div class="container">
-        <div class="profile">
+        <div class="profile ">
            <div class="profiles">
-            <img src="/src/assets/svg/profile.svg" alt="">
+            <div class="profile-img"></div>
+            <img src="src/assets/img/profile2.jpg" alt=""> 
             <p class="profile-name">@Robson_ribeiro07</p>
            </div>
         </div>
 
-        <div class="switch">
+        <div class="switch ">
             <div class="switch-button">
                <img src="/src/assets/svg/handle.svg" alt="">
 
             </div>
         </div>
         
-        <div class="section-links">
+        <div class="section-links ">
             <span data-section="chat">Chat</span>
             <span>Increva-se no NLW</span>
             <span>Increva-se no NLW</span>
             <span>Increva-se no NLW</span>
         </div>
        
-        <div class="social-medias">
+        <div class="social-medias  ">
             <ul>
                 <li>
                     <a href=""><img src="/src/assets/svg/github.svg" alt=""></a> 
@@ -52,7 +54,7 @@
         </div>
     </div>
 
-     <div class="container-mensagems disabled" >
+     <div class="container-mensagems  disabled" >
         <div class="section-mensagens">
             <img src="/src/assets/img/voltar.png" class="voltar" alt="">
             <b></b>
@@ -85,17 +87,68 @@
 
                 <div class="actions">
                     <img src="/src/assets/svg/buttonAnexaImg.svg" alt="" class="anexaImage">
-                    <img src="/src/assets/svg/emoji.svg" alt="">
+                    <img class="emojiInput" src="/src/assets/svg/emoji.svg" alt="">
                     <img class="sendButton" src="/src/assets/svg/send.svg" alt="">
-                    <input type="file" style="display: none;" accept="image/*" class="imageInput">
+                    <input type="file" style="display: none;" accept="image/*" class="imageInput">  
+
                 </div>
+
+                <emoji-picker id="emojiPicker"></emoji-picker>
+
             </div>
 
         </div>
      </div>
+   
+    <div class="container-calculadora disabled"> 
+        <div class="center">
+            <div class="top-bar">
+                <div class="iconResult">=</div>
+                <div class="operacoes">
+                    <div class="soma">1 + 1</div>
+                    <div class="resultado">2 </div>
+                </div>
+            </div>
+            
+                <div class="teclado">
+                    <ul>
+                        <li class=" operadores">CE</li>
+                        <li class="number" >7</li>
+                        <li class="number">4</li>
+                        <li class="number">1</li>
+                        <li class="number">+-</li>
+                    </ul>
+                    <ul>
+                        <li class="number">C</li>
+                        <li class="number">8</li>
+                        <li class="number">5</li>
+                        <li class="number">2</li>
+                        <li class="number">0</li>
+                    </ul>
+                    <ul>
+                        <li class="number">%</li>
+                        <li class="number">9</li>
+                        <li class="number">6</li>
+                        <li class="number">3</li>
+                        <li class="number">,</li>
+                    </ul>
+                    <ul >
+                        <li class="operadores">÷</li>
+                        <li class="operadores">X</li>
+                        <li class="operadores">-</li>
+                        <li class="operadores">+</li>
+                        <li class="operadores igual">=</li>
+                    </ul>
 
+                </div>
+            </div>
+
+    </div>
      <script src="scriptMensagem.js"></script>
      <script src="script.js"></script>
+     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script> 
+     <script src="calculadora.js"></script>
+
 
   
 </body>

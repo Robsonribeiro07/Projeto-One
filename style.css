@@ -31,7 +31,10 @@ body, html {
 }
 img {
     width: 100px;
-    height: 100px;
+    z-index: 1;
+    height: auto;
+    border-radius: 10%;
+   
 }
 .profile {
     width: 100%;
@@ -39,6 +42,8 @@ img {
     display: flex;
     max-height: 20%;
     justify-content: center;
+    margin-bottom: 20px;
+    
 }
 .profiles {
     display: flex;
@@ -62,18 +67,24 @@ img {
     border-radius: 10px;
     position: relative;  /* Importante para o posicionamento do img */
 }
-
 .switch-button img {
     position: absolute;
     width: fit-content;
-    height: 50px;
+    height: fit-content;
     top: -10px;
     transition: transform 0.5s ease-in-out;
     cursor: pointer;
     left: -20px;
+
     }
+ .switch-button img:hover {
+    border-radius: 100%;
+    transform: scale(1.1)
+
+ }   
 .profile-name {
     transition: 0.5s;
+    border: none;
 }
 .section-links {
     display: flex;
@@ -129,13 +140,19 @@ li img {
       width: 50vw;
     }
     span {
-        padding: 10px 140px;
+        padding: 20px 170px;
         text-align: center;
         display: flex;
         justify-content: center;
     }
     li img{
         z-index: 1;
+    } 
+    body {
+     background-image: url(src/assets/svg/backgroundMobile.svg);
+        
     }
     
   }
+
+  

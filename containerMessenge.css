@@ -116,9 +116,8 @@ input:focus {
 }
 .horario2{
     border: none;
-    position: absolute;
     font-size: 14px;
-    left: 50px;
+    left: 40px;
     bottom: 5px;
     list-style: none;
 }
@@ -127,8 +126,8 @@ p {
     padding: 5px;
     white-space: nowrap;
     width: fit-content;
-    border-radius: 2px;
-    border: 1px solid black
+    border-radius: 10px;
+    border: 1px solid black 
 }
 @media (max-width: 768px) {
      input::placeholder{
@@ -241,5 +240,19 @@ b{
   }
 .activedot {
     right: -350px;
+
+}
+#emojiPicker {
+    display: none;
+    position: absolute; /* Posicionamento absoluto para controle preciso */
+    bottom: 50px; /* Ajuste conforme necessário para o seu layout */
+    left: 20px; /* Ajuste para alinhar ao botão de emoji */
+    width: 300px; /* Largura personalizada */
+    height: 200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para um efeito de profundidade */
+    border-radius: 8px; /* Bordas arredondadas */
+    background-color: #fff; /* Cor de fundo */
+    z-index: 1000; /* Garante que o seletor apareça acima de outros elementos */
+    position: absolute;
 
 }

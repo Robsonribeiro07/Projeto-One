@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Filmes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Estilo para o campo de pesquisa */
+        input[type="text"] {
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Estilo para os containers de filmes */
+        .movie-container {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .movie-container svg {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .movie-container:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-title {
+            padding: 8px;
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <h2>Seleção de Filmes</h2>
+    <input type="text" id="searchInput" placeholder="Pesquise por filmes...">
+    
+    <div id="movieList">
+        <!-- Container do filme 1 -->
+        <div class="movie-container" data-title="Vingadores">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="lightblue"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="black" font-size="20">Vingadores</text>
+            </svg>
+            <div class="movie-title">Vingadores</div>
+        </div>
+        
+        <!-- Container do filme 2 -->
+        <div class="movie-container" data-title="Jurassic Park">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="green"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="black" font-size="20">Jurassic Park</text>
+            </svg>
+            <div class="movie-title">Jurassic Park</div>
+        </div>
+
+        <!-- Container do filme 3 -->
+        <div class="movie-container" data-title="Matrix">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="black"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="white" font-size="20">Matrix</text>
+            </svg>
+            <div class="movie-title">Matrix</div>
+        </div>
+
+        <!-- Container do filme 4 -->
+        <div class="movie-container" data-title="Titanic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="blue"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="white" font-size="20">Titanic</text>
+            </svg>
+            <div class="movie-title">Titanic</div>
+        </div>
+
+        <!-- Container do filme 5 -->
+        <div class="movie-container" data-title="Star Wars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="yellow"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="black" font-size="20">Star Wars</text>
+            </svg>
+            <div class="movie-title">Star Wars</div>
+        </div>
+
+        <!-- Container do filme 6 -->
+        <div class="movie-container" data-title="Avengers Endgame">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="red"/>
+                <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="black" font-size="20">Avengers</text>
+            </svg>
+            <div class="movie-title">Avengers Endgame</div>
+        </div>
+
+        <script>
+            const input = document.querySelector('input')
+
+            input.addEventListener('input', function () {
+                const query = this.value.toLowerCase()
+                const filmes = document.querySelectorAll('.movie-container')
+
+
+                filmes.forEach(function (movie) {
+                    const movieTitle = movie.getAttribute('data-title').toLocaleLowerCase()
+                    if(movieTitle.includes(query)){
+                        movie.style.display = ''
+                    } else {
+                        movie.style.display = 'none'
+                        
+                    }
+
+                })
+
+            })
+        </script>
+    </div>
+</body>
+</html>
